@@ -1,0 +1,30 @@
+### feature extractor
+image_mean: [0.485, 0.456, 0.406]
+image_std: [0.229, 0.224, 0.225]
+size: 224
+
+### dataset
+data_dir: /workspace/imagenet_1k
+
+### model
+embed_dim: 128
+depths: [2, 2, 18, 2]
+num_heads: [4, 8, 16, 32]
+num_labels: 1000
+ignore_mismatched_sizes: true
+
+### training
+output_dir: saves/swin_transformer
+per_device_train_batch_size: 32
+per_device_eval_batch_size: 32
+gradient_accumulation_steps: 1
+eval_strategy: epoch
+save_strategy: epoch
+lr_scheduler_type: cosine
+learning_rate: 5.0e-5
+logging_steps: 10
+warmup_ratio: 0.1
+report_to: none
+load_best_model_at_end: true
+metric_for_best_model: accuracy
+remove_unused_columns: False
